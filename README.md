@@ -5,7 +5,7 @@ Home: http://elcorto.github.io/pwtools
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: pwtools is a Python package for pre- and postprocessing of atomistic calculations, mostly targeted to Quantum Espresso, CPMD, CP2K and LAMMPS.
 
