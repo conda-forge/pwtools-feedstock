@@ -1,5 +1,5 @@
 {% set name = "pwtools" %}
-{% set version = "1.2.0" %}
+{% set version = "1.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/elcorto/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: d5a416f0a410e49793ecc8963288e74011f9d24884a68665b7a979f33afe7561
+  sha256: 875f7d21acf50ace78ffb15450887356ec2f94ce43f8b3e96b65f28285dc55f5
   patches:
     - make.patch
 
