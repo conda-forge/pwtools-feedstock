@@ -5,9 +5,13 @@ Home: http://elcorto.github.io/pwtools
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pwtools-feedstock/blob/master/LICENSE.txt)
 
 Summary: pwtools is a Python package for pre- and postprocessing of atomistic calculations, mostly targeted to Quantum Espresso, CPMD, CP2K and LAMMPS.
+
+Development: https://github.com/elcorto/pwtools
+
+Documentation: http://elcorto.github.io/pwtools
 
 pwtools is a Python package for pre- and postprocessing of atomistic
 calculations, mostly targeted to Quantum Espresso, CPMD, CP2K and
@@ -59,6 +63,13 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9431&branchName=master">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pwtools-feedstock?branchName=master&jobName=linux&configuration=linux_64_numpy1.18python3.6.____73_pypy" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_numpy1.19python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9431&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pwtools-feedstock?branchName=master&jobName=linux&configuration=linux_64_numpy1.19python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr>
