@@ -42,7 +42,7 @@ index d283e1e..d9b6566 100644
  
      def compress(self, forget=['forces', 'stress',
 -                               'coords','cryst_const'], dtype=np.float32):
-+                               'coords','cryst_const'], dtype=float32):
++                               'coords','cryst_const'], dtype=float):
          """Compress Trajectory by deleting unused or redundant attrs (see
          `forget`). Cast float arrays to `dtype`. float32 is usually quite OK
          for MD data.
