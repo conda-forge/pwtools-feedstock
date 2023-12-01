@@ -38,8 +38,8 @@ index 36985bc..2df43d0 100644
  $(OBJ_LOCAL): _%.so: %.f90
 -	CC=gcc CXX=g++ $(F2PY) -h $*.pyf $? -m _$* --overwrite-signature; \
 -	CC=gcc CXX=g++ $(F2PY) -c $*.pyf $? $(F2PY_FLAGS); \
-+	CC=$(GCC) CXX=$(GXX) $(F2PY) -h $*.pyf $? -m _$* --overwrite-signature; \
-+	CC=$(GCC) CXX=$(GXX) $(F2PY) -c $*.pyf $? $(F2PY_FLAGS); \
++	$(F2PY) -h $*.pyf $? -m _$* --overwrite-signature; \
++	$(F2PY) -c $*.pyf $? $(F2PY_FLAGS); \
  	rm -f $@; mv _$**.so $@
  
  
