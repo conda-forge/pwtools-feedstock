@@ -34,7 +34,7 @@ index 2e6ad9a..25556d0 100644
 -	CC=gcc CXX=g++ $(F2PY) -h $*.pyf $? -m _$* --overwrite-signature; \
 -	CC=gcc CXX=g++ $(F2PY) -c $*.pyf $? $(F2PY_FLAGS); \
 +	CC=$(GCC) CXX=$(GXX) $(F2PY) -h $*.pyf $? -m _$* --overwrite-signature; \
-+	CC=$(GCC) CXX=$(GXX) $(F2PY) -c $*.pyf $? $(F2PY_FLAGS) $(FFLAGS); \
++	CC=$(GCC) CXX=$(GXX) $(F2PY) -c $*.pyf $? $(FFLAGS) $(F2PY_FLAGS); \
  	rm -f $@; mv _$**.so $@
  
  
