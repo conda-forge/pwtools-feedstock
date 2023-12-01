@@ -13,9 +13,9 @@ source:
     - numpy.patch
 
 build:
-  number: 5
+  number: 6
   script: {{ PYTHON }} -m pip install . -vv
-  skip: true  # [not linux or py2k]
+  skip: true  # [win]
 
 requirements:
   build:
