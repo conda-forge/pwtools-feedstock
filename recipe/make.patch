@@ -1,14 +1,14 @@
-From 84c584cdc284c8424c8820eac46ce3cc4af0f232 Mon Sep 17 00:00:00 2001
+From 8e5c621d485b3850207adaf65e075a1f148f5304 Mon Sep 17 00:00:00 2001
 From: Jan Janssen <jan-janssen@users.noreply.github.com>
-Date: Fri, 1 Dec 2023 09:35:52 +0100
+Date: Fri, 1 Dec 2023 09:45:14 +0100
 Subject: [PATCH] Update Makefile
 
 ---
- src/Makefile | 10 ++++++------
+ src/Makefile | 10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/src/Makefile b/src/Makefile
-index 36985bc..ec1f4dc 100644
+index 36985bc..2df43d0 100644
 --- a/src/Makefile
 +++ b/src/Makefile
 @@ -2,7 +2,7 @@
@@ -25,10 +25,9 @@ index 36985bc..ec1f4dc 100644
  ifort-omp: F2PY_OMP_F90_FLAGS=-liomp5
  
 -gfortran: F90=gfortran
- gfortran: F90FLAGS=-x f95-cpp-input -Wall
--gfortran: ARCH=-march=native
 +gfortran: F90=$(GFORTRAN)
  gfortran: F90FLAGS=-x f95-cpp-input -Wall
+-gfortran: ARCH=-march=native
 +gfortran: ARCH=-march=nocona -mtune=haswell
  gfortran-omp: OMP_F90_FLAGS=-fopenmp -D__OPENMP
  gfortran-omp: F2PY_OMP_F90_FLAGS=-lgomp
