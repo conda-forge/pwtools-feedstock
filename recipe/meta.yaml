@@ -23,10 +23,10 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
     - make
-    - meson
   host:
     - python
     - pip
+    - meson
     - numpy
     - libblas
     - libcblas
