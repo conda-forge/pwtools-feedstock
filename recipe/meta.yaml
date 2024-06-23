@@ -13,13 +13,14 @@ source:
     - numpy.patch
 
 build:
-  number: 6
+  number: 7
   script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
     - make
