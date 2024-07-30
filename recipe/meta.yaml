@@ -8,10 +8,12 @@ package:
 source:
   url: https://github.com/elcorto/{{ name }}/archive/{{ version }}.tar.gz
   sha256: 0805c8d220a0b23e84ec94816e9b34428096ab3c7a48851dd27ca806c92a976d
+  patches:
+    - make.patch
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script: PWTOOLS_EXT_MAKE_TARGET=conda {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   skip: true  # [win or py>=312 or py<39]
 
 requirements:
