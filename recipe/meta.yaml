@@ -22,8 +22,6 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
     - make
-    - llvm-openmp  # [osx]
-    - libgomp      # [linux]
   host:
     - python
     - pip
