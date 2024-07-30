@@ -1,27 +1,24 @@
-From 82d47f0e93bbd53bad73b300dc9fd24d5685298f Mon Sep 17 00:00:00 2001
+From 03d30bac1fefc34b6e3e52cf260e714d4beaec0d Mon Sep 17 00:00:00 2001
 From: Jan Janssen <jan-janssen@users.noreply.github.com>
-Date: Tue, 30 Jul 2024 09:53:40 +0200
+Date: Tue, 30 Jul 2024 10:13:39 +0200
 Subject: [PATCH] Update Makefile
 
 ---
- src/_ext_src/Makefile | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ src/_ext_src/Makefile | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/src/_ext_src/Makefile b/src/_ext_src/Makefile
-index 3e132cd7..4da3db8b 100644
+index 3e132cd7..014af77a 100644
 --- a/src/_ext_src/Makefile
 +++ b/src/_ext_src/Makefile
-@@ -15,10 +15,9 @@ ifort: OPT=-O2
- ifort-omp: OMP_F90_FLAGS=-openmp -D__OPENMP
- ifort-omp: OMP_F2PY_FLAGS=-liomp5
+@@ -91,9 +91,7 @@ $(OBJ): $(OBJ_LOCAL)
+ #
+ # Here we use a make feature called target pattern. Fancy, eh?
+ $(OBJ_LOCAL): _%.so: %.f90
+-	CC=gcc CXX=g++ CFLAGS=$(OPT) \
+-		FC=$(F90) FFLAGS="$(F90FLAGS) $(ARCH) $(OMP_F90_FLAGS) $(OPT)" \
+-		$(F2PY) -c $? -m _$* --backend meson $(LAPACK) $(OMP_F2PY_FLAGS)
++	$(F2PY) -c $? -m _$* --backend meson $(LAPACK) $(OMP_F2PY_FLAGS)
+ 	rm -f $@; mv _$**.so $@
  
--gfortran: F90=gfortran
--gfortran: F90FLAGS=-x f95-cpp-input -Wall
--gfortran: ARCH=-march=native
--gfortran: OPT=-O2
-+gfortran: F90FLAGS=$(FFLAGS)
-+gfortran: ARCH=
-+gfortran: OPT=
- gfortran-omp: OMP_F90_FLAGS=-fopenmp -D__OPENMP
- gfortran-omp: OMP_F2PY_FLAGS=-lgomp
  
