@@ -1,23 +1,28 @@
-From 9a7d1c307a7f85f90e10d7c7a1f854bb16fe7723 Mon Sep 17 00:00:00 2001
+From 82d47f0e93bbd53bad73b300dc9fd24d5685298f Mon Sep 17 00:00:00 2001
 From: Jan Janssen <jan-janssen@users.noreply.github.com>
-Date: Tue, 30 Jul 2024 09:44:28 +0200
+Date: Tue, 30 Jul 2024 09:53:40 +0200
 Subject: [PATCH] Update Makefile
 
 ---
- src/_ext_src/Makefile | 3 +++
- 1 file changed, 3 insertions(+)
+ src/_ext_src/Makefile | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/src/_ext_src/Makefile b/src/_ext_src/Makefile
-index 3e132cd7..cbeda033 100644
+index 3e132cd7..4da3db8b 100644
 --- a/src/_ext_src/Makefile
 +++ b/src/_ext_src/Makefile
-@@ -8,6 +8,9 @@ OMP_F90_FLAGS=
- OMP_F2PY_FLAGS=
+@@ -15,10 +15,10 @@ ifort: OPT=-O2
+ ifort-omp: OMP_F90_FLAGS=-openmp -D__OPENMP
+ ifort-omp: OMP_F2PY_FLAGS=-liomp5
  
- # compiler specific variables
-+conda: F90=$(F90)
-+conda: F90FLAGS=$(FFLAGS)
-+
- ifort: F90=ifort
- ifort: F90FLAGS=-fpp -no-prec-div -fast-transcendentals
- ifort: ARCH=-xHost
+-gfortran: F90=gfortran
+-gfortran: F90FLAGS=-x f95-cpp-input -Wall
+-gfortran: ARCH=-march=native
+-gfortran: OPT=-O2
++gfortran: F90=$(F90)
++gfortran: F90FLAGS=$(FFLAGS)
++gfortran: ARCH=
++gfortran: OPT=
+ gfortran-omp: OMP_F90_FLAGS=-fopenmp -D__OPENMP
+ gfortran-omp: OMP_F2PY_FLAGS=-lgomp
+ 
