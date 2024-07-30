@@ -11,7 +11,7 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script: PWTOOLS_EXT_MAKE_TARGET=${F90} {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   skip: true  # [win or py>=312 or py<39]
 
 requirements:
