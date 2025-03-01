@@ -1,7 +1,7 @@
-From 2cf2c2785c164b7d56b7adeb2c3a9602bd9dc7bb Mon Sep 17 00:00:00 2001
+From a1608ca0d6221943c7f5d3f98c4b2f9a66592b12 Mon Sep 17 00:00:00 2001
 From: Jan Janssen <jan-janssen@users.noreply.github.com>
-Date: Sat, 1 Mar 2025 16:49:59 +0100
-Subject: [PATCH] Scipy patch (#1)
+Date: Sat, 1 Mar 2025 19:26:08 +0100
+Subject: [PATCH] Scipy patch (#2)
 
 * Update matdyn2fqha.py
 
@@ -10,12 +10,17 @@ Subject: [PATCH] Scipy patch (#1)
 * Update signal.py
 
 * Update thermo.py
+
+* Update signal.py
+
+* Update pydos.py
 ---
  bin/matdyn2fqha.py | 4 ++--
  pwtools/num.py     | 5 +++--
- pwtools/signal.py  | 2 +-
+ pwtools/pydos.py   | 3 ++-
+ pwtools/signal.py  | 5 +++--
  pwtools/thermo.py  | 5 +++--
- 4 files changed, 9 insertions(+), 7 deletions(-)
+ 5 files changed, 13 insertions(+), 9 deletions(-)
 
 diff --git a/bin/matdyn2fqha.py b/bin/matdyn2fqha.py
 index d8d91c59..4823e9a2 100755
@@ -61,15 +66,32 @@ index cae61534..59a95492 100644
      return y*area/_area
  
  
+diff --git a/pwtools/pydos.py b/pwtools/pydos.py
+index ee1ca960..5b00b121 100644
+--- a/pwtools/pydos.py
++++ b/pwtools/pydos.py
+@@ -15,7 +15,8 @@
+ import os, warnings
+ import numpy as np
+ from scipy.fftpack import fft
+-from scipy.signal import convolve, gaussian
++from scipy.signal import convolve
++from scipy.signal.windows import gaussian
+ from pwtools import constants, _flib, num
+ from pwtools.verbose import verbose
+ from pwtools.signal import pad_zeros, welch, mirror
 diff --git a/pwtools/signal.py b/pwtools/signal.py
-index 3a3af11e..03948052 100644
+index 3a3af11e..8fe59209 100644
 --- a/pwtools/signal.py
 +++ b/pwtools/signal.py
-@@ -7,7 +7,7 @@
+@@ -6,8 +6,9 @@
+ from itertools import product
  import numpy as np
  from scipy.fftpack import fft, ifft
- from scipy.signal import fftconvolve, gaussian, kaiserord, firwin, lfilter, freqz
+-from scipy.signal import fftconvolve, gaussian, kaiserord, firwin, lfilter, freqz
 -from scipy.integrate import trapz
++from scipy.signal.windows import gaussian
++from scipy.signal import fftconvolve, kaiserord, firwin, lfilter, freqz
 +from scipy.integrate import cumulative_trapezoid as trapz
  from pwtools import _flib, num
  
