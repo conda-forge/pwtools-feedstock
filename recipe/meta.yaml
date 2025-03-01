@@ -1,5 +1,5 @@
 {% set name = "pwtools" %}
-{% set version = "1.2.3" %}
+{% set version = "1.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,16 +7,14 @@ package:
 
 source:
   url: https://github.com/elcorto/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: ac94d1e41b7a8378c2cbdd4901cb3ebf497c0a943e2160f144474b7c52d2d694
+  sha256: 0805c8d220a0b23e84ec94816e9b34428096ab3c7a48851dd27ca806c92a976d
   patches:
     - make.patch
-    - numpy.patch
-    - scipy.patch
 
 build:
-  number: 10
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [win or py>=312]
+  skip: true  # [win or py>=312 or py<39]
 
 requirements:
   build:
@@ -25,9 +23,13 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
     - make
+    - pkg-config
+    - llvm-openmp  # [osx]
+    - libgomp      # [linux]
   host:
     - python
     - pip
+    - meson-python
     - numpy
     - libblas
     - libcblas
