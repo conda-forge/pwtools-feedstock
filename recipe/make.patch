@@ -1,6 +1,6 @@
-From 03d30bac1fefc34b6e3e52cf260e714d4beaec0d Mon Sep 17 00:00:00 2001
+From 03803b48d10fe88e6e1f7ff95f9c8e86fd9e7cb2 Mon Sep 17 00:00:00 2001
 From: Jan Janssen <jan-janssen@users.noreply.github.com>
-Date: Tue, 30 Jul 2024 10:13:39 +0200
+Date: Sat, 1 Mar 2025 21:39:38 +0100
 Subject: [PATCH] Update Makefile
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH] Update Makefile
  1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/src/_ext_src/Makefile b/src/_ext_src/Makefile
-index 3e132cd7..014af77a 100644
+index 3e132cd7..7b922e6a 100644
 --- a/src/_ext_src/Makefile
 +++ b/src/_ext_src/Makefile
 @@ -91,9 +91,7 @@ $(OBJ): $(OBJ_LOCAL)
@@ -18,7 +18,7 @@ index 3e132cd7..014af77a 100644
 -	CC=gcc CXX=g++ CFLAGS=$(OPT) \
 -		FC=$(F90) FFLAGS="$(F90FLAGS) $(ARCH) $(OMP_F90_FLAGS) $(OPT)" \
 -		$(F2PY) -c $? -m _$* --backend meson $(LAPACK) $(OMP_F2PY_FLAGS)
-+	$(F2PY) -c $? -m _$* --backend meson $(LAPACK) $(OMP_F2PY_FLAGS)
++		f2py -c $? -m _$* --backend meson --opt='-O3' -llapack --f90exec=$(F90) --f77exec=$(F90) --f90flags="$(F90FLAGS)" --f77flags="$(F90FLAGS)"
  	rm -f $@; mv _$**.so $@
  
  
