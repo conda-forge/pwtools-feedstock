@@ -11,9 +11,10 @@ source:
   patches:
     - make.patch
     - numpy.patch
+    - scipy.patch
 
 build:
-  number: 8
+  number: 9
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   skip: true  # [win or py>=312]
 
