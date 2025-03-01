@@ -14,7 +14,7 @@ source:
     - scipy.patch
 
 build:
-  number: 9
+  number: 10
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   skip: true  # [win or py>=312]
 
