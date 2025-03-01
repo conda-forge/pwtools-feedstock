@@ -10,10 +10,6 @@ For scipy 1.14 and numpy 2.0
  src/pwtools/pydos.py    |  3 +--
  src/pwtools/signal.py   | 39 ++++++++++++++++++++-------------------
  src/pwtools/thermo.py   |  6 +++---
- test/test_norm_int.py   |  4 ++--
- test/test_qha.py        |  4 ++--
- test/test_signal.py     |  2 +-
- test/test_trajectory.py |  2 +-
  9 files changed, 36 insertions(+), 36 deletions(-)
 
 diff --git a/bin/matdyn2fqha.py b/bin/matdyn2fqha.py
@@ -216,63 +212,3 @@ index f625ba97..61a544c8 100644
          return y*area/_area
  
      def _printwarn(self, msg):
-diff --git a/test/test_norm_int.py b/test/test_norm_int.py
-index b3ebd3dd..61b8c78b 100644
---- a/test/test_norm_int.py
-+++ b/test/test_norm_int.py
-@@ -1,5 +1,5 @@
- import numpy as np
--from scipy.integrate import simps
-+from scipy.integrate import simpson as simps
- from pwtools.num import norm_int
- 
- def test_norm_int():
-@@ -9,4 +9,4 @@ def test_norm_int():
- 
-     for scale in [True, False]:
-         yy = norm_int(y, x, area=10.0, scale=scale)
--        assert np.allclose(simps(yy,x), 10.0)
-+        assert np.allclose(simps(yy,x=x), 10.0)
-diff --git a/test/test_qha.py b/test/test_qha.py
-index ed2371c5..b6227c71 100644
---- a/test/test_qha.py
-+++ b/test/test_qha.py
-@@ -7,7 +7,7 @@
- import numpy as np
- from numpy.testing import assert_array_almost_equal as aaae
- 
--from scipy.integrate import simps, trapz
-+from scipy.integrate import simpson as simps
- from pwtools.thermo import HarmonicThermo
- from pwtools import common
- from pwtools.constants import Ry_to_J, eV, Ry, kb
-@@ -91,4 +91,4 @@ def test_qha():
-     area = np.random.rand()*10
-     ha = HarmonicThermo(pdos[:,0], pdos[:,1], skipfreq=True, dosarea=area,
-                         integrator=simps)
--    assert np.allclose(simps(ha.dos, ha.f), area)
-+    assert np.allclose(simps(ha.dos, x=ha.f), area)
-diff --git a/test/test_signal.py b/test/test_signal.py
-index 89971794..3c632b89 100644
---- a/test/test_signal.py
-+++ b/test/test_signal.py
-@@ -1,5 +1,5 @@
- import numpy as np
--from scipy.signal import gaussian
-+from scipy.signal.windows import gaussian
- from pwtools.signal import gauss, find_peaks, smooth, fft_1d_loop, ezfft
- from pwtools import signal
- from scipy.fftpack import fft
-diff --git a/test/test_trajectory.py b/test/test_trajectory.py
-index 2f74992b..b9eaaeb9 100644
---- a/test/test_trajectory.py
-+++ b/test/test_trajectory.py
-@@ -4,7 +4,7 @@
- import copy
- 
- import numpy as np
--from scipy.signal import hann
-+from scipy.signal.windows import hann
- 
- from pwtools.crys import Trajectory, Structure
- from pwtools import crys, constants
